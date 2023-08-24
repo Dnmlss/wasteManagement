@@ -1,11 +1,32 @@
-from flask import Flask, render_template, redirect, url_for
-import requests
+from flask import render_template, request, redirect, url_for
+from connection import app, db
+from models import Registro
 
-app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return render_template("index2.html")
+@app.route("/login", methods = ["GET", "POST"])
+def login():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        apellido = request.form["apellido"]
+        cedula = request.form["cedula"]
+        correo = request.form["correo"]
+        contraseña = request.form["contraseña"]
+
+        datos_usuarios = Registro(nombre, apellido, cedula, correo, contraseña)
+
+        db.session.add(datos_usuarios)
+        db.session.commit()
+
+        return render_template("login.html")
+    
+    return render_template("login.html")
+
+
+@app.route("/opciones")
+def opciones():
+    return render_template("opciones.html")
+
+# CRUD CREATE - READ - UPDATE - DELETE
 
 @app.route("/vidrio")
 def vidrio():
