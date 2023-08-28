@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+		<title>Mostrar datos</title>
+	</head>
+	<body>
+        <table>
+            <thead>
+                <th>
+                    <th>Nombre</th>
+                    <th>Cedula/Ruc</th>
+                    <th>Puntos</th>
+                </th>
+            </thead>
+            <tbody>
+                {{% for usuarios in lista_ci_puntos %}}
+                <td>{{usuarios.nombre}}</td>
+                <td>{{usuarios.cedula}}</td>
+                <td>{{usuarios.puntos}}</td>
+                <td>
+                    <!--Aqui indicamos que al apretar el boton actualizar nos direccionea a la ruta actualizar.html y guarde en la variable alumno_id el ID de nuestro alumno-->
+                    <form action="{{ url_for('actualizar', usuario_id=usuario_id) }}" method="get">
+                        <input type="submit" value="Actualizar">
+                    </form>
+                </td>
+                <td>
+                    <form action="/eliminar" method="post">
+                        <input type="hidden" name="usuario_id" value="{{usuario_id}}">
+                        <input type="submit" value="Eliminar">
+                    </form>
+                </td>
+            </tbody>
+            {{% endfor %}}
+        </table>
+    </body>
+</html>

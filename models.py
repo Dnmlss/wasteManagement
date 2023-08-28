@@ -8,15 +8,11 @@ db = SQLAlchemy()
 class Registro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String, nullable=False)
-    apellido = db.Column(db.String, nullable=False)
-    cedula = db.Column(db.Integer, nullable=False)
-    correo = db.Column(db.String, nullable=False)
-    contraseña = db.Column(db.String, nullable=False)
+    cedula = db.Column(db.Integer, nullable=False, unique=True) # Hacemos que la cedula sea unica
+    # puntos = db.Column(db.Integer, nullable=False)
 
     # Funcion constructora de la base de datos
-    def __init__(self, nombre, apellido, cedula, correo, contraseña):
+    def __init__(self, nombre, cedula):
         self.nombre = nombre
-        self.apellido = apellido
         self.cedula = cedula
-        self.correo = correo
-        self.contraseña = contraseña
+        # self.puntos = puntos

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<title>Actualizar</title>
+	</head>
+	<body>
+		<form method="post">
+			<div>
+				<label for="nombre">Nombre</label>
+				<input
+					type="text"
+					name="nombre"
+					id="nombre"
+					value="{{usuario_actualizado.nombre}}"
+				/>
+			</div>
+
+			<div>
+				<label for="cedula">Cedula/Ruc</label>
+				<input
+					type="number"
+					name="cedula"
+					id="cedula"
+					value="{{usuario_actualizado.cedula}}"
+				/>
+			</div>
+
+			<div>
+				<label for="puntos">Puntos</label>
+				<input
+					type="number"
+					name="puntos"
+					id="puntos"
+					value="{{usuario_actualizado.puntos}}"
+				/>
+			</div>
+			<input type="submit" value="Actualizar" />
+		</form>
+	</body>
+</html>
